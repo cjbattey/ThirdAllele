@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "third-allele"
+dynamic = ["version"]
+description = "Estimate sequencing error rates from third alleles at germline heterozygous SNPs."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "defopt>=6.4",
+    "numpy>=1.24",
+    "polars>=0.20",
+    "scipy>=1.10",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[project.scripts]
+third-allele-errors = "third_allele.cli:run"
+
+[tool.setuptools.dynamic]
+version = { attr = "third_allele.__version__" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "slow: large simulations (deselect with -m 'not slow')",
+    "bcftools: end-to-end tests that need bcftools on PATH",
+]

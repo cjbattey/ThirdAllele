@@ -1,0 +1,13 @@
+name: third-allele-errors
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12
+  - pip
+  - setuptools>=64
+  - bcftools=1.21
+  - htslib=1.21
+  - polars=1.12.0
+  - scipy=1.14.1
+  - defopt=6.4.0
